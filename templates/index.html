@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../static/js/jquery-3.3.1.js"></script> <!-- fallback -->
+	
+	<style>
+		.clicked{
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+
+	<main>
+		<fieldset>
+			<legend>Mover para calibrar</legend>
+			
+			<button type="button" id="top_left"><img src=""></button>
+			<button type="button" id="top_right"><img src=""></button><br>
+			<button type="button" id="bottom_left"><img src=""></button>
+			<button type="button" id="bottom_right"><img src=""></button><tr>
+			
+			<button type="button" id="calibrate">
+		</fieldset>
+	</main>
+	
+	<script>
+		$(document).ready(function(){
+			
+			//Mover arriba a la izquierdda
+			$("#top_left").on("click", function(){
+				if($("#top_left").attr('class') || "clicked"){
+					$.ajax({
+						url: '/topLeft',
+						type: 'GET'
+					})					//<--- !!!!!NO USAR PUNTO Y COMA (MAGIA POKÉMON)
+					.done(function(){
+						rmClass();
+						$("#top_left").addClass("clicked");
+					});
+				}
+			});
+			
+			//Mover arriba a la derecha
+			$("#top_right").on("click", function(){
+				if($("#top_right").attr('class') || "clicked"){
+					$.ajax({
+						url:'/topRight',
+						type:'GET'
+					})
+					.done(function(){
+						rmClass();
+						$("#top_right").addClass("clicked");
+					});
+				}
+			});
+			
+			//Mover abajo a la izquierda
+			$("#bottom_left").on("click", function(){
+				if($("#bottom_left").attr('class') || "clicked"){
+					$.ajax({
+						url:'/bottomLeft',
+						type:'GET'
+					})
+					.done(function(){
+						rmClass();
+						$("#bottom_left").addClass("clicked");
+					});
+				}
+			});
+			
+			
+			//Mover abajo a la derecha
+			$("#bottom_right").on("click", function(){
+				if($("#bottom_right").attr('class') || "clicked"){
+					$.ajax({
+						url:'/bottomRight',
+						type:'GET'
+					})
+					.done(function(){
+						rmClass();
+						$("#bottom_right").addClass("clicked");
+					});
+				}
+			});
+			
+			
+			//Mover la punta a un lado para dejar espacio para calibrar la cama
+			$("#calibrate").on("click", function(){)
+				$.ajax({
+					url:'/calibrate',
+					type:'GET'
+				})
+				.done(function(){
+
+				});
+			});
+			
+			
+			//Remueve el nombre de la clase de todos los botones
+			function rmClass(){
+				$("#top_left").removeClass("clicked");
+				$("#top_right").removeClass("clicked");
+				$("#bottom_left").removeClass("clicked");
+				$("#bottom_right").removeClass("clicked");
+			}
+		});
+	</script>
+</body>
+</html>
