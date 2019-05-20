@@ -21,10 +21,10 @@
 			
 			<button type="button" id="top_left"><img src=""></button>
 			<button type="button" id="top_right"><img src=""></button><br>
-			<button type="button" id="bottom_left"><img src=""></button>
+			<button type="button" id="bottom_left" class="clicked"><img src=""></button>
 			<button type="button" id="bottom_right"><img src=""></button><tr>
 			
-			<button type="button" id="calibrate">
+			<button type="button" id="calibrate">Calibrar</button>
 		</fieldset>
 	</main>
 	
@@ -90,7 +90,10 @@
 			
 			
 			//Mover la punta a un lado para dejar espacio para calibrar la cama
-			$("#calibrate").on("click", function(){)
+			$("#calibrate").on("click", function(){
+				var value = {corner:1}
+				
+				
 				$.ajax({
 					url:'/calibrate',
 					type:'GET'
