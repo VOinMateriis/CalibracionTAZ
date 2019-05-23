@@ -12,6 +12,7 @@ app = Flask(__name__)
 def index():
 	os.chdir("/home/pi/oprint/local/bin/OctoControl")	#se mueve al directorio donde están los comandos de OctoControl
 	os.system("bash 8g G0 F3000")	#set speed/feedrate of move in mm/minute (between the starting point and ending point)
+	tip_up()	#sube la punta (por si al inicio la punta esta en otra esquina y el su posicion de origen) para no rayar la cama al moverse
 	os.system("bash 8home")	#va a "home" para calibrar la posición de la punta y moverse correctamente
 	bottomLeft()	#se mueve a abajo a la izquierda para comenzar
 	return render_template('index.html')	#carga la plantilla
