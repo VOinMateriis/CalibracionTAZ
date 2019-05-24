@@ -27,7 +27,7 @@ def topLeft():
 	global mv2calibrate	#To tell Python, that we want to use the global variable, we have to use the keyword “global”
 	global state
 	tip_up()	#sube la punta para no rayar la cama al moverse
-	os.system("bash 8g1 x5 y280 z0")	#realiza el movimiento
+	os.system("bash 8g1 x10 y270 z0")	#realiza el movimiento
 	tip_home()	#regresa la punta a su posición de origen (home)
 	mv2calibrate = 1	#declara que la punta está en el lado izquierdo
 	state = 0		#declara que la punta está en una esquina y no en la posición para calibrar
@@ -40,7 +40,7 @@ def topRight():
 	global mv2calibrate
 	global state
 	tip_up()
-	os.system("bash 8g1 x285 y280 z0")
+	os.system("bash 8g1 x277 y270 z0")
 	tip_home()
 	mv2calibrate = 2	#declara que la punta está en el lado derecho
 	state = 0
@@ -53,7 +53,7 @@ def bottomLeft():
 	global mv2calibrate
 	global state
 	tip_up()
-	os.system("bash 8g1 x5 y0 z0")
+	os.system("bash 8g1 x10 y3 z0")
 	tip_home()
 	mv2calibrate = 1
 	state = 0
@@ -66,7 +66,7 @@ def bottomRight():
 	global mv2calibrate
 	global state
 	tip_up()
-	os.system("bash 8g1 x285 y0 z0")
+	os.system("bash 8g1 x277 y3 z0")
 	tip_home()
 	mv2calibrate = 2
 	state = 0

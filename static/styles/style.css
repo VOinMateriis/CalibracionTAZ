@@ -1,0 +1,134 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+html{
+	/* font-size:20px; */
+	font-size:1.5vw; 	/* The text size can be set with a "vw" unit, which means the "viewport width".
+						That way the text size will follow the size of the browser window.
+						Viewport is the browser window size. 1vw = 1% of viewport width. 
+						If the viewport is 50cm wide, 1vw is 0.5cm. */
+}
+
+#logo{
+	width:20%;
+	margin: auto;
+	margin-top:2rem;
+}
+
+h1{
+	font-size:6rem;
+	font-family: 'Lobster', cursive;
+	font-weight:normal;
+	transform: rotate(-5deg);
+	text-align: center;
+	margin-bottom:3rem;
+}
+
+p{
+	width:80%;
+	margin:auto;
+	margin-bottom:1rem;
+	font-size:1.7rem;
+	font-family: 'Montserrat', sans-serif;
+}
+
+button{
+	width:50%;
+	background-color: transparent;
+	border:none;
+	padding:0rem;
+}
+
+button img{
+	opacity:0.5
+}
+
+.clicked img{
+	opacity:1;
+}
+
+.bed{
+	width:80%;
+	margin:3rem auto;
+}
+
+.top, .bottom{
+	display: flex;
+	width:100%;
+}
+
+img{
+	width:100%;
+	display:block;	//MAGIA POKÉMON --ELIMINA EL ESPACIO BLANCO DEBAJO DE LAS IMAGENES
+}
+
+#calibrate{
+	width:50%;
+	margin: 2rem auto;
+	border-radius:3rem;
+	display:block;
+	background-color:#F6D500;
+	font-size:3rem;
+	padding:1rem;
+	//transition:all 0.1s;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#calibrate:hover{
+	background-color:black;
+	color:#F6D500;
+	cursor:pointer;
+}
+
+#calibrate:active{
+	background-color:black;
+	color:#F6D500;
+}
+
+/* For desktop: */
+@media only screen and (min-width: 800px) {
+	
+	html, body{
+		height:100%;
+	}
+	
+	main{
+		display:flex;
+		height:100%;
+	}
+	
+	.col{
+		width:50%;
+	}
+	
+	#logo{
+		width:20%;
+		margin-bottom:2rem;
+	}
+	
+	h1{
+		font-size:3rem;
+		width:80%;
+		margin:2rem auto;
+	}
+	
+	p{
+		font-size:1rem;
+	}
+	
+	.bed{
+		width:60%;
+		margin:auto;
+		margin-top:10%;
+	}
+	
+	#calibrate{
+		width:auto;
+		font-size:1rem;
+		transition:all 0.2s;
+	}
+	
+}

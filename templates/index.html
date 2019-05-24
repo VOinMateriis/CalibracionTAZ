@@ -3,151 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}">
+	<link rel="shortcut icon" href="{{url_for('static', filename='images/logo.ico')}}">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="../static/js/jquery-3.3.1.js"></script> <!-- fallback -->
 	
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat&display=swap" rel="stylesheet">
 	
-	<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}"> -->
-	
-	<style>
-		*{
-			margin:0;
-			padding:0;
-			box-sizing:border-box;
-		}
-		
-		html{
-			/* font-size:20px; */
-			font-size:1.5vw; 	/* The text size can be set with a "vw" unit, which means the "viewport width".
-								That way the text size will follow the size of the browser window.
-								Viewport is the browser window size. 1vw = 1% of viewport width. 
-								If the viewport is 50cm wide, 1vw is 0.5cm. */
-		}
-		
-		#logo{
-			width:20%;
-			margin: auto;
-			margin-top:2rem;
-		}
-		
-		h1{
-			font-size:6rem;
-			font-family: 'Lobster', cursive;
-			font-weight:normal;
-			transform: rotate(-5deg);
-			text-align: center;
-			margin-bottom:3rem;
-		}
-		
-		p{
-			width:80%;
-			margin:auto;
-			margin-bottom:1rem;
-			font-size:1.7rem;
-			font-family: 'Montserrat', sans-serif;
-		}
-		
-		button{
-			width:50%;
-			background-color: transparent;
-			border:none;
-			padding:0rem;
-		}
-		
-		button img{
-			opacity:0.5
-		}
-		
-		.clicked img{
-			opacity:1;
-		}
-		
-		.bed{
-			width:80%;
-			margin:3rem auto;
-		}
-		
-		.top, .bottom{
-			display: flex;
-			width:100%;
-		}
-		
-		img{
-			width:100%;
-			display:block;	//MAGIA POKÉMON --ELIMINA EL ESPACIO BLANCO DEBAJO DE LAS IMAGENES
-		}
-		
-		#calibrate{
-			width:50%;
-			margin: 2rem auto;
-			border-radius:3rem;
-			display:block;
-			background-color:#F6D500;
-			font-size:3rem;
-			padding:1rem;
-			//transition:all 0.1s;
-			font-family: 'Montserrat', sans-serif;
-		}
-		
-		#calibrate:hover{
-			background-color:black;
-			color:#F6D500;
-			cursor:pointer;
-		}
-		
-		#calibrate:active{
-			background-color:black;
-			color:#F6D500;
-		}
-
-		/* For desktop: */
-		@media only screen and (min-width: 800px) {
-			
-			html, body{
-				height:100%;
-			}
-			
-			main{
-				display:flex;
-				height:100%;
-			}
-			
-			.col{
-				width:50%;
-			}
-			
-			#logo{
-				width:20%;
-				margin-bottom:2rem;
-			}
-			
-			h1{
-				font-size:3rem;
-				width:80%;
-				margin:2rem auto;
-			}
-			
-			p{
-				font-size:1rem;
-			}
-			
-			.bed{
-				width:60%;
-				margin:auto;
-				margin-top:10%;
-			}
-			
-			#calibrate{
-				width:auto;
-				font-size:1rem;
-				transition:all 0.2s;
-			}
-			
-		}
-	</style>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 
 <body>
@@ -158,7 +21,7 @@
 
 	<main>
 		<div class="col">
-			<img id="logo" src="{{url_for('static', filename='logo.png')}}">
+			<img id="logo" src="{{url_for('static', filename='images/logo.png')}}">
 			
 			<h1>Asistente de calibración para TAZ</h1>
 		
@@ -169,13 +32,13 @@
 		<div class="col">
 			<div class="bed">
 				<div class="top">
-					<button type="button" id="top_left"><img src="{{url_for('static', filename='top-left.png')}}"></button>
-					<button type="button" id="top_right"><img src="{{url_for('static', filename='top-right.png')}}"></button>
+					<button type="button" id="top_left"><img src="{{url_for('static', filename='images/top-left.png')}}"></button>
+					<button type="button" id="top_right"><img src="{{url_for('static', filename='images/top-right.png')}}"></button>
 				</div>
 				
 				<div class="bottom">
-					<button type="button" id="bottom_left" class="clicked"><img src="{{url_for('static', filename='bottom-left.png')}}"></button>
-					<button type="button" id="bottom_right"><img src="{{url_for('static', filename='bottom-right.png')}}"></button>
+					<button type="button" id="bottom_left" class="clicked"><img src="{{url_for('static', filename='images/bottom-left.png')}}"></button>
+					<button type="button" id="bottom_right"><img src="{{url_for('static', filename='images/bottom-right.png')}}"></button>
 				</div>
 			</div>
 			
@@ -183,90 +46,6 @@
 		</div>
 	</main>
 	
-	<script type="text/javascript">
-		$(document).ready(function(){
-	
-			//Mover arriba a la izquierdda
-			$("#top_left").on("click", function(){
-				if($("#top_left").attr('class') || "clicked"){
-					$.ajax({
-						url: '/topLeft',
-						type: 'GET'
-					})					//<--- !!!!!NO USAR PUNTO Y COMA (MAGIA POKÉMON)
-					.done(function(){
-						rmClass();
-						$("#top_left").addClass("clicked");
-					});
-				}
-			});
-			
-			//Mover arriba a la derecha
-			$("#top_right").on("click", function(){
-				if($("#top_right").attr('class') || "clicked"){
-					$.ajax({
-						url:'/topRight',
-						type:'GET'
-					})
-					.done(function(){
-						rmClass();
-						$("#top_right").addClass("clicked");
-					});
-				}
-			});
-			
-			//Mover abajo a la izquierda
-			$("#bottom_left").on("click", function(){
-				if($("#bottom_left").attr('class') || "clicked"){
-					$.ajax({
-						url:'/bottomLeft',
-						type:'GET'
-					})
-					.done(function(){
-						rmClass();
-						$("#bottom_left").addClass("clicked");
-					});
-				}
-			});
-			
-			
-			//Mover abajo a la derecha
-			$("#bottom_right").on("click", function(){
-				if($("#bottom_right").attr('class') || "clicked"){
-					$.ajax({
-						url:'/bottomRight',
-						type:'GET'
-					})
-					.done(function(){
-						rmClass();
-						$("#bottom_right").addClass("clicked");
-					});
-				}
-			});
-			
-			
-			//Mover la punta a un lado para dejar espacio para calibrar la cama
-			$("#calibrate").on("click", function(){
-				var value = {corner:1}
-				
-				
-				$.ajax({
-					url:'/calibrate',
-					type:'GET'
-				})
-				.done(function(){
-
-				});
-			});
-			
-			
-			//Remueve el nombre de la clase de todos los botones
-			function rmClass(){
-				$("#top_left").removeClass("clicked");
-				$("#top_right").removeClass("clicked");
-				$("#bottom_left").removeClass("clicked");
-				$("#bottom_right").removeClass("clicked");
-			}
-		});
-	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/movements.js') }}"></script>
 </body>
 </html>
