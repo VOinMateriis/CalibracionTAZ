@@ -9,6 +9,7 @@
 	<script src="../static/js/jquery-3.3.1.js"></script> <!-- fallback -->
 	
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
@@ -27,6 +28,8 @@
 		
 			<p>*Presione una esquina de la cama para mover la punta.</p>
 			<p>*Haga click en el botón <i>Mover para calibrar</i> para alejar la punta de la esquina y dejar espacio para calibrar. Presione nuevamente para regresar la punta a la esquina.</p>
+			<p>*Presione la casa para ir a <i>home</i>.</p>
+			<p>*Presione la flecha para subir y bajar la punta.</p>
 		</div>
 		
 		<div class="col">
@@ -42,7 +45,13 @@
 				</div>
 			</div>
 			
+			<div class="controls">
 			<button type="button" id="calibrate">Mover para calibrar</button>
+			<div class="icons">
+				<a id="home" class="fa fa-home"></a>
+				<a id="up_down" class="fa fa-arrow-circle-up"></a>
+			</div>
+			</div>
 		</div>
 	</main>
 	

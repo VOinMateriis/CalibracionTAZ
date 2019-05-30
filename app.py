@@ -13,13 +13,13 @@ def index():
 	os.chdir("/home/pi/oprint/local/bin/OctoControl")	#se mueve al directorio donde están los comandos de OctoControl
 	os.system("bash 8g G0 F3000")	#set speed/feedrate of move in mm/minute (between the starting point and ending point)
 	tip_up()	#sube la punta (por si al inicio la punta esta en otra esquina y el su posicion de origen) para no rayar la cama al moverse
-	os.system("bash 8home")	#va a "home" para calibrar la posición de la punta y moverse correctamente
+	home()	#va a "home" para calibrar la posición de la punta y moverse correctamente
 	bottomLeft()	#se mueve a abajo a la izquierda para comenzar
 	return render_template('index.html')	#carga la plantilla
 
 mv2calibrate = 0	#variable que identifica en que lado de la impresora está la punta (izquierdo o derecho) para saber hacia qué lado mover la punta en la función 'calibrate'
 state = 0		#variable que identifica si la punta está en una esquina o en la posición para calibrar para saber si alejar o regresar la punta en la función 'calibrate'
-
+up_down = 0		#variable que identifica si la punta está arriba o abajo para saber si subirla o bajarla en la función 'up_down'
 
 #Se mueve arriba a la izquierda
 @app.route('/topLeft', methods = ['GET'])
@@ -111,14 +111,42 @@ def calibrate():
 	return ''
 
 
+#Regresa la punta a la posicion de origen home cuando se presiona el boton de la casa
+@app.route('/home', methods = ['GET'])
+def home():
+	os.system("bash 8home")
+	return ''
+	
+
+#Sube/baja la punta cuando se presiona el botón de la flecha
+@app.route('/up_down', methods = ['GET'])
+def upDown():
+	global up_down
+	
+	#Sube la punta
+	if up_down == 0:	#0 = punta abajo
+		os.system("bash 8g1 Z30")	#sube la punta
+		up_down = 1	#Declara que la punta está arriba
+		
+	#Baja la punta
+	else:
+		tip_home()	#Regresa la punta a home
+	
+	return ''
+	
+
 #Sube la punta para no rayar la cama al moverse
 def tip_up():
 	os.system("bash 8g1 Z5")
+	return ''
 
 
 #Regresa la punta a su posición de origen (home)
 def tip_home():
+	global up_down
 	os.system("bash 8g G28 Z")
+	up_down = 0	#Declara que la punta está abajo
+	return ''
 	
 
 if __name__ == '__main__':

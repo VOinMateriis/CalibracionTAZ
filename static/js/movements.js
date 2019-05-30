@@ -73,6 +73,26 @@ $(document).ready(function(){
 	});
 	
 	
+	//Mover la punta a home
+	$("#home").on("click", function(){
+		$.ajax({
+			url:'/home',
+			type:'get'
+		})
+	});
+	
+	
+	//Subir y bajar la punta
+	$("#up_down").on("click", function(){
+		$("#up_down").toggleClass("rotate");	//Agrega/remueve la clase para girar la flecha con cada click
+		
+		$.ajax({
+			url:'/up_down',
+			type:'get'
+		})
+	});
+	
+	
 	//Remueve el nombre de la clase de todos los botones
 	function rmClass(){
 		$("#top_left").removeClass("clicked");

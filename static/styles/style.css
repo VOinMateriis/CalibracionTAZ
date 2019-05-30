@@ -28,9 +28,8 @@ h1{
 }
 
 p{
-	width:80%;
+	width:90%;
 	margin:auto;
-	margin-bottom:1rem;
 	font-size:1.7rem;
 	font-family: 'Montserrat', sans-serif;
 }
@@ -51,7 +50,7 @@ button img{
 }
 
 .bed{
-	width:80%;
+	width:70%;
 	margin:3rem auto;
 }
 
@@ -67,7 +66,7 @@ img{
 
 #calibrate{
 	width:50%;
-	margin: 2rem auto;
+	margin: auto;
 	border-radius:3rem;
 	display:block;
 	background-color:#F6D500;
@@ -83,9 +82,39 @@ img{
 	cursor:pointer;
 }
 
-#calibrate:active{
-	background-color:black;
+.controls{
+	display:flex;
+	margin-bottom:2rem;
+}
+
+.icons{
+	width:33%;
+	text-align:left;
+	font-size:6rem;
+}
+
+.icons a:hover{
 	color:#F6D500;
+}
+
+.icons a:active{
+	color:#F6D500;
+}
+
+#home{
+	cursor:pointer;
+	margin: 0rem 1rem;
+	transition:color 0.2s;
+}
+
+#up_down{
+	transition:all 0.3s;
+	margin: 0rem 1rem;
+	cursor:pointer;
+}
+
+.rotate{
+	transform:rotate(180deg);
 }
 
 /* For desktop: */
@@ -117,6 +146,7 @@ img{
 	
 	p{
 		font-size:1rem;
+		margin-bottom:1rem;
 	}
 	
 	.bed{
@@ -125,8 +155,20 @@ img{
 		margin-top:10%;
 	}
 	
+	.controls{
+		display:block;
+	}
+	
+	
+	.icons{
+		width:auto;
+		text-align:center;
+		font-size:2rem;
+	}
+	
 	#calibrate{
 		width:auto;
+		margin: 2rem auto 1rem auto;
 		font-size:1rem;
 		transition:all 0.2s;
 	}
