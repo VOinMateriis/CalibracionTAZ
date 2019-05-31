@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	
+	var home = 0;	//Variable que identifica si la punta está en home (0 = no está en home)
+	
 
 	//Mover arriba a la izquierdda
 	$("#top_left").on("click", function(){
@@ -10,9 +13,12 @@ $(document).ready(function(){
 			.done(function(){
 				rmClass();
 				$("#top_left").addClass("clicked");
+				rotate();
+				home = 0;
 			});
 		}
 	});
+	
 	
 	//Mover arriba a la derecha
 	$("#top_right").on("click", function(){
@@ -24,9 +30,12 @@ $(document).ready(function(){
 			.done(function(){
 				rmClass();
 				$("#top_right").addClass("clicked");
+				rotate();
+				home = 0;
 			});
 		}
 	});
+	
 	
 	//Mover abajo a la izquierda
 	$("#bottom_left").on("click", function(){
@@ -38,6 +47,8 @@ $(document).ready(function(){
 			.done(function(){
 				rmClass();
 				$("#bottom_left").addClass("clicked");
+				rotate();
+				home = 0;
 			});
 		}
 	});
@@ -53,6 +64,8 @@ $(document).ready(function(){
 			.done(function(){
 				rmClass();
 				$("#bottom_right").addClass("clicked");
+				rotate();
+				home = 0;
 			});
 		}
 	});
@@ -60,26 +73,41 @@ $(document).ready(function(){
 	
 	//Mover la punta a un lado para dejar espacio para calibrar la cama
 	$("#calibrate").on("click", function(){
-		var value = {corner:1}
 		
+		if(home == 1){	//Si la punta está en home cuando se presiona 'Mover para calibrar':
+			$("#bottom_left").addClass("clicked");	//Añade opacidad a la esquina inferior izquierda
+			home = 0;	//Declara que la punta no está en home
+		}
 		
 		$.ajax({
 			url:'/calibrate',
 			type:'GET'
 		})
 		.done(function(){
-
+			rotate();
 		});
 	});
 	
 	
 	//Mover la punta a home
 	$("#home").on("click", function(){
+		home = 1;	//Declara que la punta Sí está en home
+		
 		$.ajax({
 			url:'/home',
 			type:'get'
 		})
+		.done(function(){
+			rotate();
+			rmClass();
+		});
 	});
+	
+	
+	//Gira la flecha hacia arriba (posición original)
+	function rotate(){
+		$("#up_down").removeClass("rotate");
+	}
 	
 	
 	//Subir y bajar la punta
